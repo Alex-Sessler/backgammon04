@@ -1,0 +1,24 @@
+@(message: String)
+
+@scripts = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/opengames.css")">
+<script src="@routes.Assets.at("javascripts/menu.js")" type="text/javascript"></script>
+} 
+
+
+@main("Games", scripts, nav="games") {
+		<input id="loadType" type="hidden" name="loadType" value="Play">
+		<div id="mainMenu2" class="btn-group">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="@routes.Application.games()">my Games</a></li>
+				<li><a href="@routes.Application.openGames()">open Games</a></li>
+			</ul>
+		</div>
+		<div id="availableGames" class="btn-group">
+							<!-- For demonstration purpose -->
+		<button id="diceButton" onclick="createNewGame();">CREATE GAME</button>
+		<!-- Delete these before deployment -->
+			<ul id="gamesList">
+			</ul>
+		</div>
+}

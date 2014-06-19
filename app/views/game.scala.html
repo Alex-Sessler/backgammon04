@@ -1,0 +1,38 @@
+@(id: String) 
+
+@scripts = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/game.css")">
+} 
+
+@main("Game", scripts, nav="games") {
+	<input id="gameId" type="hidden" name="gameId" value="@id">
+	<div id="game_area">
+		<div id="status_box">
+			<div id="box_player_black" class ="player_box">
+				<div id="black_checker"></div>
+				<span id="nickname_black_player" class="player_nickname"></span>
+			</div>
+			<span id ="arrow"></span>
+			<div id="box_player_white" class ="player_box">
+				<div id="white_checker"></div>
+				<span id="nickname_white_player" class="player_nickname"></span>
+			</div>
+		</div>
+		<div id="game_background"></div>
+		<canvas width="720px" height="642px" id="dice_canvas">Your Browser does not support HTML5</canvas>
+		<canvas width="720px" height="642px" id="checker_canvas">Your Browser does not support HTML5</canvas>
+	
+	
+	
+		<!-- For demonstration purpose -->
+		<button id="diceButton" onclick="playDice();">PLAY DICE</button>
+		<!-- Delete these before deployment -->
+	
+	
+	</div>
+	
+	<script src="@routes.Assets.at("javascripts/fields.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/game.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/sprite_constants.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/dice.js")" type="text/javascript"></script>
+}

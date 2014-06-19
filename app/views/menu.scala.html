@@ -1,0 +1,24 @@
+@(message: String)
+
+@main("Menu") {
+	<div id="container" style="text-align: center; margin-top: 40px">
+		<div id="mainMenu" class="btn-group">
+			<ul>
+				<li><button onclick="createNewGame()"
+						style="width: 270px; height: 200px; background: url(@routes.Assets.at("images/new_game_button_black.png")) no-repeat; background-size: cover; border: none;"></button></li>
+				<li><button onclick="alert('u fuckr')"
+						style="width: 270px; height: 200px; background: url(@routes.Assets.at("images/settings_button.png")) no-repeat; background-size: cover; border: none;"></button></li>
+			</ul>
+		</div>
+		<div id="availableGames" class="btn-group">
+			<ul id="gamesList">
+			</ul>
+		</div>
+	</div>
+
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/menu.js")"></script>
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/menu.css")">
+ <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-theme.css")">
+}

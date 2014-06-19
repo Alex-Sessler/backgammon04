@@ -1,0 +1,43 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.signin()
+GET     /home                       controllers.Application.index()
+POST	/home                       controllers.Application.index()
+GET     /game/:id                   controllers.Application.game(id: Integer)
+GET     /register                   controllers.Application.register()
+GET     /profile                    controllers.Application.profile()
+GET     /games                      controllers.Application.games()
+GET     /opengames                  controllers.Application.openGames()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+
+
+###############################################################################
+#		REST API															  #
+###############################################################################
+
+#Game controller
+GET		/api/game/:id				@controllers.GameController.getGame(id: Long)
+POST	/api/game					@controllers.GameController.startGame()
+POST 	/api/game/:id/join			@controllers.GameController.joinGame(id: Long)
+DELETE 	/api/game/:id				@controllers.GameController.deleteGame(id: Long)
+GET		/api/game/list/				@controllers.GameController.getOpenGames()
+GET		/api/user/game/list/		@controllers.GameController.getMyGames()
+
+#Movement controller
+POST	/api/game/:id/move/:sourcePointId/:targetPointId				@controllers.MovementController.move(id: Long, sourcePointId: Integer, targetPointId: Integer)
+
+#User controller
+GET		/api/login					@controllers.UserController.login()
+GET		/api/user/:id				@controllers.UserController.getUser(id: Long)
+POST	/api/user/					@controllers.UserController.createUser()
+PUT		/api/user/					@controllers.UserController.updateUser()
+
+#Dice Controller
+POST	/api/game/:gameId/dice		@controllers.DiceController.playDice(gameId: Long)

@@ -1,0 +1,62 @@
+#game_area {
+	height: 780px;
+	margin-top: 40px;
+}
+
+#game_background {
+	background-image: url("../images/sprite.png");
+	background-position: 0px 0px;
+	width: 720px;
+	height: 642px;
+	position: relative;
+	z-index: -1;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#dice_canvas {
+	z-index: -1;
+}
+
+canvas {
+	display: block;
+	margin-top: -642px;
+	margin-left: 190px;
+}
+
+#status_box {
+	width: 720px;
+	height: 80px;
+	border: 1px solid black;
+	margin: 0px auto;
+}
+
+#box_player_black {
+	float: left;
+	margin-left: 30px; 
+}
+
+#box_player_white {
+	float: right;
+	margin-right: 30px; 
+}
+
+.player_box {
+	width: 300px; 
+	height: 60px; 
+	border: 5px solid black; 
+	margin-top: 10px;
+}
+
+.player_nickname {
+	display: inline-block; 
+	font-size: 38px; 
+	float: left; 
+	margin-left: 10px;
+}
+
+#arrow {
+	display: inline-block; 
+	font-size: 50px; 
+}

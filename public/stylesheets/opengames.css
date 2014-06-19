@@ -1,0 +1,19 @@
+#availableGames {
+	margin-top: 30px;
+}
+
+#gamesList {
+	padding-left: 0px;
+}
+
+.gameListItem {
+	width: 200px;
+	height: 150px;
+	background-color: #dddddd;
+	padding: 25px 0px 25px 0px;
+	border: 2px solid black;
+	border-radius: 2px;
+	list-style-type: none;
+	display: inline-block;
+	margin: 40px;
+}

@@ -1,0 +1,21 @@
+#register-form {
+	margin: 200px auto;
+	width: 400px;
+}
+
+.form-control {
+	width: 300px;
+	margin-left: 20px;
+}
+
+.col-sm-offset-2 {
+	text-align: right;
+}
+
+#rememberDiv {
+	display: inline-block;
+}
+
+#new_account_link {
+	margin-right: 10px;
+}

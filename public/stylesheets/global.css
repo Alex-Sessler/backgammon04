@@ -1,0 +1,14 @@
+#container {
+	text-align: center;
+	margin-top: 40px
+}
+
+#container>div {
+	display: block;
+}
+
+.container-fluid {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1100px;
+}
