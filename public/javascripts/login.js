@@ -5,6 +5,7 @@ function make_base_auth(user, pass) {
 }
 
 function signIn() {
+
 	var nick = document.getElementById("username").value;
 	var pw = document.getElementById("password").value;
 	var validUser = validate(nick, pw);

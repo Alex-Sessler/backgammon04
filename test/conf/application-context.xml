@@ -31,50 +31,50 @@
 <!-- 	</bean> -->
 
 
-<!-- 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
-<!-- 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver" -->
-<!-- 		p:jdbcUrl="jdbc:mysql://localhost:3306/sesebackgammon" p:user="root" -->
-<!-- 		p:password="" p:initialPoolSize="5" p:minPoolSize="5" p:maxPoolSize="20" -->
-<!-- 		p:automaticTestTable="c3p0" p:idleConnectionTestPeriod="5" -->
-<!-- 		p:testConnectionOnCheckin="true" /> -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
+		p:jdbcUrl="jdbc:mysql://localhost:3306/sesebackgammon" p:user="root"
+		p:password="" p:initialPoolSize="5" p:minPoolSize="5" p:maxPoolSize="20"
+		p:automaticTestTable="c3p0" p:idleConnectionTestPeriod="5"
+		p:testConnectionOnCheckin="true" />
 
-<!-- 	<bean id="transactionManager" -->
-<!-- 		class="org.springframework.orm.hibernate4.HibernateTransactionManager"> -->
-<!-- 		<property name="sessionFactory" ref="sessionFactory" /> -->
-<!-- 	</bean> -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
-<!-- 	<bean id="sessionFactory" -->
-<!-- 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> -->
-<!-- 		<property name="dataSource" ref="dataSource" /> -->
-<!-- 		<property name="annotatedClasses"> -->
-<!-- 			<list> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.UserImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.BoardImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.CheckerImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.DiceImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.GameImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.MovementImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.PlayerImpl -->
-<!-- 				</value> -->
-<!-- 				<value>backgammon04.backgammon04_persistence_mysql.model.impl.PointImpl -->
-<!-- 				</value> -->
-<!-- 			</list> -->
-<!-- 		</property> -->
-<!-- 		<property name="hibernateProperties"> -->
-<!-- 			<props> -->
-<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> -->
-<!-- 				<prop key="hibernate.show_sql">true</prop> -->
-<!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
-<!-- 				<prop key="javax.persistence.validation.mode">none</prop> -->
-<!-- 			</props> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.UserImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.BoardImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.CheckerImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.DiceImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.GameImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.MovementImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.PlayerImpl
+				</value>
+				<value>backgammon04.backgammon04_persistence_mysql.model.impl.PointImpl
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
 	<bean id="userDao"
 		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.UserDaoImpl"></bean>
 	<bean id="playerDao"

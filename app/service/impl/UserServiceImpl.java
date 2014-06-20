@@ -88,7 +88,6 @@ public class UserServiceImpl implements UserService {
 		user.setUsername(registerDto.getUsername());
 		userDao.save(user);
 
-		register2(registerDto);
 	}
 
 	@Override

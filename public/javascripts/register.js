@@ -1,9 +1,14 @@
 $(document).ready(function()
 {
+
     /* sendung formular abfangen */
     $("#registerForm").submit(function() {
  
-        /* ajax objekt zum aufruf & versand an das skript
+    	alert("document ready username=" + $("#username").val() + "&email=" + $("#email").val() + "&password1=" + $("#password1").val() + "&password2=" + $("#password2").val());
+        
+    	
+    	var postData = $("registerForm").serialize();
+    	/* ajax objekt zum aufruf & versand an das skript
         'name' und 'email' sind in der data-zeile die variablen für das php-skript */
         $.ajax({
             type: "POST",
@@ -28,40 +33,11 @@ $(document).ready(function()
  
 });
 
-
-
-
-
-function register() {
-	    var postData = $("register-form").serialize();
-	    $.ajax(
-	    {
-	        url : "/api/user/",
-	        type: "POST",
-	        data : postData,
-	        async : false,
-	        success: function(data) 
-	        {
-	        	var nick = document.getElementById("username").value;
-	        	var pw = document.getElementById("password1").value;
-	        	var validUser = validate(nick, pw);
-
-	        },
-	        error: function(jqXHR, textStatus, errorThrown)
-	        {
-	        	alert("Error!");
-	        	window.location.replace("/register");
-
-	        }
-	    });
-	    e.preventDefault(); //STOP default action
-}
-
 function fill() {
 	var username = $.cookie('username');
 	var email = $.cookie('email');
-	document.forms[0].[0].value = username;
-	document.forms[0].[1].value = email;
+	document.saveprofile[0].value = username;
+	document.saveprofile[1].value = email;
 }
 
 

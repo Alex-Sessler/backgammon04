@@ -29,10 +29,13 @@ public class UserController extends AbstractController {
 	}
 
 	public Result createUser() {
+		
+		
 		RegisterDto registerDto = form(RegisterDto.class).bindFromRequest()
 				.get();
+		
 		try {
-			userService.register2(registerDto);
+			userService.register(registerDto);
 		} catch (RegistrationNotPermittedException e) {
 			forbidden(e.getMessage());
 		}
