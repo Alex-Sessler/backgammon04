@@ -4,32 +4,43 @@
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-       					http://www.springframework.org/schema/beans/spring-beans-3.0.xsd       					  
-						http://www.springframework.org/schema/context
-       					http://www.springframework.org/schema/context/spring-context-3.0.xsd
-       					http://www.springframework.org/schema/tx
-       					http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-       					http://www.springframework.org/schema/util
-       					http://www.springframework.org/schema/util/spring-util-3.0.xsd
-       					http://www.springframework.org/schema/data/mongo
-          				http://www.springframework.org/schema/data/mongo/spring-mongo-1.4.xsd">
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                          
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                        http://www.springframework.org/schema/util
+                        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+                        http://www.springframework.org/schema/data/mongo
+                        http://www.springframework.org/schema/data/mongo/spring-mongo-1.4.xsd">
 
 
 	<tx:annotation-driven />
 
+
+
 	<context:component-scan base-package="controllers, service, model, actions, tui" />
+	<context:property-placeholder
+		properties-ref="myProperties" />
 
-	<!-- Factory bean that creates the Mongo instance -->
-<!-- 	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean"> -->
-<!-- 		<property name="host" value="localhost" /> -->
-<!-- 	</bean> -->
+	<bean id="myProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="group_id">backgammon04</prop>
+				<prop key="artifact_id">backgammon04_persistence_mongodb</prop>
+			</props>
+		</property>
+	</bean>
 
-	<!-- MongoTemplate for connecting and quering the documents in the database -->
-<!-- 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate"> -->
-<!-- 		<constructor-arg name="mongo" ref="mongo" /> -->
-<!-- 		<constructor-arg name="databaseName" value="sesebackgammon" /> -->
-<!-- 	</bean> -->
+	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+		<property name="host" value="localhost" />
+	</bean>
 
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongo" ref="mongo" />
+		<constructor-arg name="databaseName" value="sesebackgammon" />
+	</bean>
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
@@ -48,21 +59,21 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.UserImpl
+				<value>${group_id}.${artifact_id}.model.impl.UserImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.BoardImpl
+				<value>${group_id}.${artifact_id}.model.impl.BoardImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.CheckerImpl
+				<value>${group_id}.${artifact_id}.model.impl.CheckerImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.DiceImpl
+				<value>${group_id}.${artifact_id}.model.impl.DiceImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.GameImpl
+				<value>${group_id}.${artifact_id}.model.impl.GameImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.MovementImpl
+				<value>${group_id}.${artifact_id}.model.impl.MovementImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.PlayerImpl
+				<value>${group_id}.${artifact_id}.model.impl.PlayerImpl
 				</value>
-				<value>backgammon04.backgammon04_persistence_mysql.model.impl.PointImpl
+				<value>${group_id}.${artifact_id}.model.impl.PointImpl
 				</value>
 			</list>
 		</property>
@@ -75,37 +86,32 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="userDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.UserDaoImpl"></bean>
-	<bean id="playerDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.PlayerDaoImpl"></bean>
-	<bean id="pointDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.PointDaoImpl"></bean>
-	<bean id="gameDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.GameDaoImpl"></bean>
-	<bean id="boardDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.BoardDaoImpl"></bean>
-	<bean id="checkerDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.CheckerDaoImpl"></bean>
-	<bean id="diceDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.DiceDaoImpl"></bean>
-	<bean id="movementDao"
-		class="backgammon04.backgammon04_persistence_mysql.model.dao.impl.MovementDaoImpl"></bean>
 
-    <bean id="userImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.UserImpl" scope="prototype"></bean>
-    <bean id="boardImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.BoardImpl" scope="prototype"></bean>
-    <bean id="checkerImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.CheckerImpl" scope="prototype"></bean>
-    <bean id="diceImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.DiceImpl" scope="prototype"></bean>
-    <bean id="gameImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.GameImpl" scope="prototype"></bean>
-    <bean id="movementImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.MovementImpl" scope="prototype"></bean>
-    <bean id="playerImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.PlayerImpl" scope="prototype"></bean>
-    <bean id="pointImpl"
-        class="backgammon04.backgammon04_persistence_mysql.model.impl.PointImpl" scope="prototype"></bean>
+	<bean id="userDao" class="${group_id}.${artifact_id}.model.dao.impl.UserDaoImpl"></bean>
+	<bean id="playerDao" class="${group_id}.${artifact_id}.model.dao.impl.PlayerDaoImpl"></bean>
+	<bean id="pointDao" class="${group_id}.${artifact_id}.model.dao.impl.PointDaoImpl"></bean>
+	<bean id="gameDao" class="${group_id}.${artifact_id}.model.dao.impl.GameDaoImpl"></bean>
+	<bean id="boardDao" class="${group_id}.${artifact_id}.model.dao.impl.BoardDaoImpl"></bean>
+	<bean id="checkerDao"
+		class="${group_id}.${artifact_id}.model.dao.impl.CheckerDaoImpl"></bean>
+	<bean id="diceDao" class="${group_id}.${artifact_id}.model.dao.impl.DiceDaoImpl"></bean>
+	<bean id="movementDao"
+		class="${group_id}.${artifact_id}.model.dao.impl.MovementDaoImpl"></bean>
+
+	<bean id="userImpl" class="${group_id}.${artifact_id}.model.impl.UserImpl"
+		scope="prototype"></bean>
+	<bean id="boardImpl" class="${group_id}.${artifact_id}.model.impl.BoardImpl"
+		scope="prototype"></bean>
+	<bean id="checkerImpl" class="${group_id}.${artifact_id}.model.impl.CheckerImpl"
+		scope="prototype"></bean>
+	<bean id="diceImpl" class="${group_id}.${artifact_id}.model.impl.DiceImpl"
+		scope="prototype"></bean>
+	<bean id="gameImpl" class="${group_id}.${artifact_id}.model.impl.GameImpl"
+		scope="prototype"></bean>
+	<bean id="movementImpl" class="${group_id}.${artifact_id}.model.impl.MovementImpl"
+		scope="prototype"></bean>
+	<bean id="playerImpl" class="${group_id}.${artifact_id}.model.impl.PlayerImpl"
+		scope="prototype"></bean>
+	<bean id="pointImpl" class="${group_id}.${artifact_id}.model.impl.PointImpl"
+		scope="prototype"></bean>
 </beans>
