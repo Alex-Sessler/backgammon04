@@ -17,7 +17,8 @@ libraryDependencies ++= Seq(
 	"javax.el" % "el-api" % "2.2",
   "backgammon04" % "backgammon04-persistence-interface" % "0.0.2-SNAPSHOT",
   "backgammon04" % "backgammon04-persistence-mysql" % "0.0.1-SNAPSHOT",
-  "backgammon04" % "backgammon04-persistence-mongodb" % "0.0.1-SNAPSHOT"
+  "backgammon04" % "backgammon04-persistence-mongodb" % "0.0.2-SNAPSHOT",
+  "backgammon04" % "backgammon04-persistence-db4o" % "0.0.1-SNAPSHOT"
 )  
 
 play.Project.playJavaSettings
